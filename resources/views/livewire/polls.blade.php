@@ -1,5 +1,5 @@
 <div>
-   @forelse ($polls as $poll)
+    @forelse ($polls as $poll)
     <div class="mb-4">
         <h3 class="mb-4 text-xl">
             {{$poll->title}}
@@ -7,7 +7,7 @@
         @foreach ($poll->options as $option)
         <div class="mb-2 flex gap-2 items-center">
             <p>{{$option->name}}: {{$option->votes->count()}} votes.</p>
-            <button class="btn">Vote</button>
+            <button class="btn" wire:click='vote({{$option->id}})'>Vote</button>
         </div>
         @endforeach
     </div>
