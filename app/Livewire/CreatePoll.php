@@ -21,6 +21,12 @@ class CreatePoll extends Component
         'options.*' => 'The option can not be empty.'
     ];
 
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+
     public function render()
     {
         return view('livewire.create-poll');
@@ -52,5 +58,7 @@ class CreatePoll extends Component
          } */
 
         $this->reset(['title', 'options']);
+
+        $this->dispatch('pollCreated');
     }
 }
